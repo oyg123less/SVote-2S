@@ -1,0 +1,60 @@
+# ============================================================================
+# SVote-2S — Default Evaluation Hyperparameters
+# ============================================================================
+# Override per model/dataset in the shell script via environment variables,
+# or create a copy of this file for ablation experiments.
+# ============================================================================
+
+# --- SC Sampling (Stage-0) ---
+sampling:
+  n_samples: 20
+  temperature: 0.7
+  top_p: 0.95
+  seed: 42
+  max_model_len: 8192
+
+# Per-model max_new_tokens (Llama generates longer CoT traces)
+max_new_tokens:
+  qwen2_5_7b_instruct: 512
+  gemma2_9b_it: 512
+  llama3_1_8b_instruct: 768
+
+# --- CISC P(True) ---
+cisc:
+  T_conf: 2.0
+  top_logprobs: 20
+
+# --- RASC ---
+rasc:
+  thresholds: "0.3,0.4,0.5,0.6,0.7"
+  buffer_sizes: "3,5,7,10"
+
+# --- RVSC ---
+rvsc:
+  n_samples: 20
+  top_k: 3
+
+# --- SVote Stage-1 (Support Voting) ---
+svote_stage1:
+  weight_mode: combined        # uniform | cisc | cluster | combined
+  ptrue_T: 1.0                 # temperature for sigmoid(L/T) on CISC logits
+  k_min: 2                     # minimum selected paragraphs
+  k_max: 4                     # maximum selected paragraphs
+  context_mode: paragraph      # paragraph | sentence
+  score_thresh_continue: 0.5
+  score_thresh_same_para: 0.7
+  bridging: true               # paragraph-bridging constraint
+
+# --- SVote Stage-2 (Re-inference) ---
+svote_stage2:
+  n_resample: 10               # N' samples on filtered context
+
+# --- SVote-2S Fusion Grid Search ---
+fusion:
+  T_values: [1.0, 2.0, 5.0, 8.0, 15.0, 20.0]
+  alpha_values: [1.0, 1.5, 2.0, 2.5, 3.0]
+
+# --- vLLM Inference ---
+vllm:
+  gpu_memory_utilization: 0.85
+  enforce_eager: false
