@@ -18,7 +18,7 @@ NUM_GPUS="${1:-4}"
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 MODELS=(qwen2_5_7b_instruct gemma2_9b_it llama3_1_8b_instruct)
-DATASETS=(hotpotqa musique 2wiki_dev12576)
+DATASETS=(hotpotqa musique 2wiki)
 
 echo "=================================================================="
 echo " SVote-2S: E5 + E7 Ablation (all configurations)"
@@ -49,12 +49,12 @@ echo " All E5/E7 ablations complete!"
 echo "=================================================================="
 
 # Collect results summary
-"${PYTHON:-/GPUdata/student/asc002/ouyangguo/anaconda/envs/vetagent/bin/python}" -c "
+"${PYTHON:-python}" -c "
 import json, os, glob
 
 PROJECT = '$SCRIPT_DIR/..'
 models = ['qwen2_5_7b_instruct', 'gemma2_9b_it', 'llama3_1_8b_instruct']
-datasets = ['hotpotqa', 'musique', '2wiki_dev12576']
+datasets = ['hotpotqa', 'musique', '2wiki']
 
 print()
 print('=' * 80)

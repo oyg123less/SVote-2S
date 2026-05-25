@@ -8,7 +8,7 @@
 # Example:
 #   bash scripts/run_full_eval.sh qwen2_5_7b_instruct hotpotqa 4
 #   bash scripts/run_full_eval.sh gemma2_9b_it musique 4
-#   bash scripts/run_full_eval.sh llama3_1_8b_instruct 2wiki_dev12576 4
+#   bash scripts/run_full_eval.sh llama3_1_8b_instruct 2wiki 4
 #
 # Pipeline stages (all use vLLM):
 #   P0. SC Sampling   — N=20 stochastic CoT samples per question
@@ -26,7 +26,7 @@
 set -euo pipefail
 
 PROJECT="$(cd "$(dirname "$0")/.." && pwd)"
-PYTHON="${PYTHON:-/GPUdata/student/asc002/ouyangguo/anaconda/envs/vetagent/bin/python}"
+PYTHON="${PYTHON:-python}"
 CONFIG="$PROJECT/configs/models.yaml"
 EVAL_CONFIG="${EVAL_CONFIG:-$PROJECT/configs/eval_default.yaml}"
 

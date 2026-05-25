@@ -20,7 +20,7 @@
 #   bash scripts/run_stage.sh cisc    qwen2_5_7b_instruct hotpotqa 4
 #   bash scripts/run_stage.sh svote   qwen2_5_7b_instruct hotpotqa 4
 #   bash scripts/run_stage.sh cot     gemma2_9b_it musique 4
-#   bash scripts/run_stage.sh fusion  llama3_1_8b_instruct 2wiki_dev12576
+#   bash scripts/run_stage.sh fusion  llama3_1_8b_instruct 2wiki
 # ============================================================================
 set -euo pipefail
 
@@ -30,7 +30,7 @@ DATASET="${3:?Usage: $0 <STAGE> <MODEL> <DATASET> [NUM_GPUS]}"
 NUM_GPUS="${4:-4}"
 
 PROJECT="$(cd "$(dirname "$0")/.." && pwd)"
-PYTHON="${PYTHON:-/GPUdata/student/asc002/ouyangguo/anaconda/envs/vetagent/bin/python}"
+PYTHON="${PYTHON:-python}"
 CONFIG="$PROJECT/configs/models.yaml"
 EVAL_CONFIG="${EVAL_CONFIG:-$PROJECT/configs/eval_default.yaml}"
 

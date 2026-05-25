@@ -91,7 +91,7 @@ For multi-GPU parallel evaluation, split into shards:
 ```bash
 python scripts/shard_dataset.py --input data/hotpotqa/dev_full.json --num_shards 4
 python scripts/shard_dataset.py --input data/musique/musique_ans_v1.0_dev.jsonl --num_shards 4
-python scripts/shard_dataset.py --input data/2wiki/dev_12576_full.json --num_shards 4
+python scripts/shard_dataset.py --input data/2wiki/dev_full.json --num_shards 4
 ```
 
 ---
@@ -215,14 +215,14 @@ bash scripts/run_stage.sh cisc qwen2_5_7b_instruct hotpotqa 4
 bash scripts/run_stage.sh cot gemma2_9b_it musique 4
 
 # Run RVSC for Llama on 2Wiki
-bash scripts/run_stage.sh rvsc llama3_1_8b_instruct 2wiki_dev12576 4
+bash scripts/run_stage.sh rvsc llama3_1_8b_instruct 2wiki 4
 ```
 
 ### Option C: Run All Models × All Datasets
 
 ```bash
 for MODEL in qwen2_5_7b_instruct gemma2_9b_it llama3_1_8b_instruct; do
-    for DATASET in hotpotqa musique 2wiki_dev12576; do
+    for DATASET in hotpotqa musique 2wiki; do
         bash scripts/run_full_eval.sh $MODEL $DATASET 4
     done
 done

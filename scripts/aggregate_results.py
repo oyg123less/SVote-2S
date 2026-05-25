@@ -230,7 +230,7 @@ def main():
     models = [args.model] if args.model else [
         "qwen2_5_7b_instruct", "gemma2_9b_it", "llama3_1_8b_instruct"]
     datasets = [args.dataset] if args.dataset else [
-        "hotpotqa", "musique", "2wiki_dev12576"]
+        "hotpotqa", "musique", "2wiki"]
 
     for model in models:
         for dataset in datasets:

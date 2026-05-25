@@ -7,19 +7,26 @@
 
 models:
   qwen2_5_7b_instruct:
-    path: /GPUdata/student/asc002/ouyangguo/ProgramItem/Models/Qwen/qwen2_5_7b_instruct
+    path: /path/to/Qwen2.5-7B-Instruct
     dtype: float16
     trust_remote_code: false
     model_family: qwen
 
+  qwen2_5_72b_instruct:
+    path: /path/to/Qwen2.5-72B-Instruct
+    dtype: float16
+    trust_remote_code: false
+    model_family: qwen
+    tensor_parallel: 4
+
   gemma2_9b_it:
-    path: /GPUdata/student/asc002/ouyangguo/ProgramItem/Models/Gemma/gemma2_9b_it
+    path: /path/to/gemma-2-9b-it
     dtype: bfloat16
     trust_remote_code: false
     model_family: gemma
 
   llama3_1_8b_instruct:
-    path: /GPUdata/student/asc002/ouyangguo/ProgramItem/Models/LLAMA/llama3_1_8b_instruct
+    path: /path/to/Llama-3.1-8B-Instruct
     dtype: float16
     trust_remote_code: false
     model_family: llama
@@ -50,13 +57,13 @@ datasets:
   musique_shard3: { path: data/musique/ans_dev_shard3.jsonl, file_type: jsonl, adapter: musique, support_unit: paragraph, id_field: id }
 
   # ---- 2WikiMultihopQA dev (12,576 questions) ----
-  2wiki_dev12576_full:
-    path: data/2wiki/dev_12576_full.json
+  2wiki_full:
+    path: data/2wiki/dev_full.json
     file_type: json
     adapter: 2wiki
     support_unit: sentence
     id_field: _id
-  2wiki_dev12576_shard0: { path: data/2wiki/dev_12576_shard0.json, file_type: json, adapter: 2wiki, support_unit: sentence, id_field: _id }
-  2wiki_dev12576_shard1: { path: data/2wiki/dev_12576_shard1.json, file_type: json, adapter: 2wiki, support_unit: sentence, id_field: _id }
-  2wiki_dev12576_shard2: { path: data/2wiki/dev_12576_shard2.json, file_type: json, adapter: 2wiki, support_unit: sentence, id_field: _id }
-  2wiki_dev12576_shard3: { path: data/2wiki/dev_12576_shard3.json, file_type: json, adapter: 2wiki, support_unit: sentence, id_field: _id }
+  2wiki_shard0: { path: data/2wiki/dev_shard0.json, file_type: json, adapter: 2wiki, support_unit: sentence, id_field: _id }
+  2wiki_shard1: { path: data/2wiki/dev_shard1.json, file_type: json, adapter: 2wiki, support_unit: sentence, id_field: _id }
+  2wiki_shard2: { path: data/2wiki/dev_shard2.json, file_type: json, adapter: 2wiki, support_unit: sentence, id_field: _id }
+  2wiki_shard3: { path: data/2wiki/dev_shard3.json, file_type: json, adapter: 2wiki, support_unit: sentence, id_field: _id }
