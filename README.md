@@ -2,6 +2,14 @@
 
 This repository contains the evaluation code and baselines for **SVote-2S**, a two-stage support-voting framework that improves self-consistency (SC) for multi-hop question answering. All LLM inference is accelerated via [vLLM](https://github.com/vllm-project/vllm).
 
+## Motivation
+
+<p align="center">
+  <img src="figures/figure1.png" width="90%" alt="Figure 1: Motivation — SC performance degrades with noisy context in multi-hop QA"/>
+</p>
+
+**Figure 1:** Standard SC suffers from noisy context in multi-hop QA — irrelevant paragraphs dilute reasoning quality, leading to error propagation across hops.
+
 ## Overview
 
 SVote-2S improves upon standard Self-Consistency (SC) by:
@@ -9,6 +17,14 @@ SVote-2S improves upon standard Self-Consistency (SC) by:
 1. **Stage-1 (Support Voting):** Aggregates weighted votes over N sampled CoT traces to identify the most relevant evidence passages (K ∈ [2, 4]).
 2. **Stage-2 (Re-inference):** Re-prompts the LLM with filtered context (only selected evidence) and performs SC on N' new samples.
 3. **Fusion:** Combines confidence-weighted votes from both stages via P(True) scoring.
+
+## SC Saturation Curves
+
+<p align="center">
+  <img src="figures/figure2.png" width="90%" alt="Figure 2: SC saturation curves — SVote-2S breaks the saturation ceiling"/>
+</p>
+
+**Figure 2:** SC saturates quickly as N grows, while SVote-2S (dashed) continues to improve by re-inferencing on filtered evidence.
 
 ---
 
