@@ -1,4 +1,4 @@
-# SVote-2S: Two-Stage Support Voting for Self-Consistency in Multi-hop QA
+# SVote-2S: Input-Side Evidence Voting for Two-Stage Self-Consistency in Multi-Hop QA
 
 This repository contains the evaluation code and baselines for **SVote-2S**, a two-stage support-voting framework that improves self-consistency (SC) for multi-hop question answering. All LLM inference is accelerated via [vLLM](https://github.com/vllm-project/vllm).
 
@@ -372,7 +372,7 @@ All values are defined in `configs/eval_default.yaml`:
 |---|---|---|
 | **CoT** | Baseline | Deterministic chain-of-thought decoding (temperature=0) |
 | **SC** | Baseline | Majority vote over N=20 stochastic CoT samples |
-| **CISC** | Baseline | P(True) confidence-weighted SC (Portillo Wightman et al., 2023) |
+| **CISC** | Baseline | P(True) confidence-weighted SC (Taubenfeld et al., Findings of ACL 2025) |
 | **RASC** | Baseline | Reasoning-Aware SC with logistic regression (Wan et al., NAACL 2025) |
 | **RVSC** | Baseline | Ranked-answer voting via IRV/BCV/MRRV (Wang et al., ACL 2025) |
 | **SVote (input-vote)** | Ours | Stage-2 SC on evidence-filtered context |
@@ -391,10 +391,12 @@ All values are defined in `configs/eval_default.yaml`:
 ## Citation
 
 ```bibtex
-@article{svote2s2025,
-  title={SVote-2S: Two-Stage Support Voting for Self-Consistency in Multi-hop Question Answering},
-  author={...},
-  year={2025}
+@inproceedings{svote2s2026,
+  title = {{SVote-2S}: Input-Side Evidence Voting for Two-Stage Self-Consistency in Multi-Hop {QA}},
+  author = {Ouyang, Guo and Wang, Ge and Zhu, Tao and Zou, Yi and Yin, Xuehao and Li, Guoliang and Ni, Fuchuan},
+  booktitle = {Findings of the Association for Computational Linguistics: EMNLP 2026},
+  year = {2026},
+  publisher = {Association for Computational Linguistics}
 }
 ```
 
